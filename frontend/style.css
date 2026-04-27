@@ -1,0 +1,225 @@
+/* ── Reset & base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #0d0d1a;
+    color: #e0e0f0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+}
+
+/* ── App shell ── */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 16px 32px;
+}
+
+/* ── Header ── */
+header {
+    text-align: center;
+    padding: 24px 0 20px;
+}
+
+header h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #c8c8f0;
+}
+
+header h1 .vs {
+    color: #5c6bc0;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0 6px;
+}
+
+/* ── Main layout ── */
+main {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ── Board ── */
+.board-wrapper {
+    flex-shrink: 0;
+}
+
+#board {
+    width: min(560px, 90vw);
+}
+
+/* Override chessboard.js border colour */
+.board-b72b1 {
+    border: 3px solid #2a2a4a !important;
+    border-radius: 4px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Sidebar ── */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 220px;
+    padding-top: 4px;
+}
+
+/* ── Cards ── */
+.status-card,
+.control-card {
+    background: #16162e;
+    border: 1px solid #2a2a4a;
+    border-radius: 8px;
+    padding: 14px 16px;
+}
+
+.status-label,
+.control-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6060a0;
+    margin-bottom: 6px;
+}
+
+.status-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #a0c4ff;
+    min-height: 1.4em;
+    line-height: 1.4;
+}
+
+.status-text.check    { color: #ffb347; }
+.status-text.checkmate { color: #ff6b6b; }
+.status-text.draw      { color: #aaaaaa; }
+.status-text.win       { color: #69ff81; }
+
+/* ── Select ── */
+select {
+    width: 100%;
+    padding: 8px 10px;
+    background: #0d0d1a;
+    color: #c8c8f0;
+    border: 1px solid #3a3a6a;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236060a0' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+}
+
+select:focus {
+    border-color: #5c6bc0;
+}
+
+/* ── Buttons ── */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: filter 0.15s, transform 0.1s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: #3949ab;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.15);
+}
+
+.btn-secondary {
+    background: #1e1e3a;
+    color: #a0a0d0;
+    border: 1px solid #3a3a6a;
+}
+
+.btn-secondary:hover {
+    background: #26264a;
+    color: #c8c8f0;
+}
+
+/* ── Legend ── */
+.legend {
+    background: #16162e;
+    border: 1px solid #2a2a4a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #8080b0;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.white-dot { background: #e8e8e8; border: 1px solid #888; }
+.black-dot { background: #222; border: 1px solid #555; }
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: min(560px, 90vw);
+    }
+
+    .button-group {
+        flex-direction: row;
+    }
+
+    .btn {
+        flex: 1;
+    }
+}
