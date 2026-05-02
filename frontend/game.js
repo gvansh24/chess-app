@@ -170,7 +170,7 @@
             onDragStart:  onDragStart,
             onDrop:       onDrop,
             onSnapEnd:    onSnapEnd,
-            pieceTheme:   'https://unpkg.com/chessboardjs@1.0.0/www/img/chesspieces/wikipedia/{piece}.png',
+            pieceTheme:   'img/chesspieces/{piece}.png',
             snapbackSpeed: 200,
             snapSpeed:     80
         });
