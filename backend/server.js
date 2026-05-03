@@ -9,6 +9,14 @@ wss.on('connection', (ws) => {
     const stockfish = spawn('stockfish');
     let lineBuffer = '';
 
+    stockfish.on('error', (err) => {
+        console.error('Failed to start Stockfish:', err.message);
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify({ type: 'engineError', message: err.message }));
+            ws.close(1011, 'engine unavailable');
+        }
+    });
+
     // Initialise UCI and set a safe default skill level
     stockfish.stdin.write('uci\n');
     stockfish.stdin.write('setoption name Skill Level value 8\n');

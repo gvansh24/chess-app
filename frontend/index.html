@@ -21,6 +21,7 @@
         <main>
             <div class="board-wrapper">
                 <div id="board"></div>
+                <div id="promotionPicker" class="promotion-picker"></div>
             </div>
 
             <aside class="sidebar">
@@ -41,7 +42,7 @@
 
                 <div class="button-group">
                     <button id="newGameBtn" class="btn btn-primary">New Game</button>
-                    <button id="flipBoardBtn" class="btn btn-secondary">Flip Board</button>
+                    <button id="rotateBoardBtn" class="btn btn-secondary">Rotate View</button>
                 </div>
 
                 <div class="legend">
@@ -54,6 +55,17 @@
                 </div>
             </aside>
         </main>
+    </div>
+
+    <div id="gameOverModal" class="game-over-modal">
+        <div class="game-over-card">
+            <div id="gameOverResult" class="game-over-result"></div>
+            <div id="gameOverReason" class="game-over-reason"></div>
+            <div class="game-over-buttons">
+                <button id="gameOverNewGame" class="btn btn-primary">New Game</button>
+                <button id="gameOverClose" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
     </div>
 
     <script src="game.js"></script>
