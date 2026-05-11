@@ -11,6 +11,12 @@ id_ed25519.pub
 node_modules/
 npm-debug.log*
 
+# Stray installers / executables — never commit these
+*.exe
+*.msi
+*.dmg
+*.pkg
+
 # Frontend libs / assets downloaded by frontend/setup-libs.sh
 # (kept out of git — re-fetched on each VM via curl)
 frontend/jquery.min.js
