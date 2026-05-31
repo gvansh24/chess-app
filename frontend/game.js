@@ -236,7 +236,7 @@
 
     function connect() {
         const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
-        ws = new WebSocket(proto + '//' + location.host + '/chess/ws');
+        ws = new WebSocket(proto + '//' + location.host + '/games/chess/ws');
 
         ws.onopen = function () {
             const d = DIFFICULTY[currentDiff];
