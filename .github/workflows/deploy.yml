@@ -17,9 +17,11 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Update this path if the repository is located elsewhere on your server
-            cd ~/chess-app
+            # Repos live under ~/server on the openclaw host
+            cd ~/server/chess-app
             git pull origin master
-            
-            # Rebuild and restart the containers
-            docker compose up -d --build
+            # Refresh CDN-fetched frontend libs (not in git)
+            bash frontend/setup-libs.sh
+
+            # Rebuild and restart the containers (docker needs sudo on this host)
+            sudo docker compose up -d --build
