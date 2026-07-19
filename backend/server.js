@@ -52,6 +52,12 @@ wss.on('connection', (ws) => {
         console.log(`Stockfish exited with code ${code}`);
     });
 
+    // Keep the connection alive through proxies that drop idle streams.
+    // A WebSocket ping is real traffic, so it resets nginx proxy_read_timeout.
+    const heartbeat = setInterval(() => {
+        if (ws.readyState === WebSocket.OPEN) ws.ping();
+    }, 30000);
+
     ws.on('message', (raw) => {
         try {
             const msg = JSON.parse(raw.toString());
@@ -78,6 +84,7 @@ wss.on('connection', (ws) => {
 
     ws.on('close', () => {
         console.log('Client disconnected — killing Stockfish');
+        clearInterval(heartbeat);
         try { stockfish.kill(); } catch (_) {}
     });
 
