@@ -17,9 +17,11 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e
+
             # Repos live under ~/server on the openclaw host
             cd ~/server/chess-app
-            git pull origin master
+            git pull --ff-only origin master
             # Refresh CDN-fetched frontend libs (not in git)
             bash frontend/setup-libs.sh
 
